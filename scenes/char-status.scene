@@ -1,0 +1,19 @@
+                     Player Status                  
+ __________________________________________________ 
+| %hero_name%                       Level: %level% |
+| ------------------------------------------------ |
+| HP: %HP%/%fHP%              Stamina: %ST%/%fST%  |
+| Exp: %exp%/%fExp%                                |
+| Strength                                   %str% |
+| Ability                                    %abl% |
+| Resistance                                 %rst% |
+| Intelligence                               %int% |
+| ------------------------------------------------ |
+| %action                                        % |
+| %action                                        % |
+| %action                                        % |
+| %action                                        % |
+| %action                                        % |
+| %action                                        % |
+| < Back                                           |
+|__________________________________________________|

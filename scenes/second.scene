@@ -1,0 +1,37 @@
+####################################################
+11@----------------------------------------------- #
+#####    ################  |  ######################
+....#    ##.............#  |  #.....................
+....#    ################  |  ######################
+....#    ###########################################
+....#    ###########################################
+....#    ###########################################
+....#    ###########_###############################
+....#    ######### | |   __ _   __ __ _ ___ __ _  ##
+....#    ######### | |__/ _` | / _/ _` (_-</ _` | ##
+....#    ######### |____\__,_| \__\__,_/__/\__,_| ##
+....#    #########  __| |___   / _ \ ______ ___ ___#
+....#    ######### / _` / -_) | (_) (_-<_-</ _ (_-<#
+....#    ######### \__,_\___|  \___//__/__/\___/__/#
+....#    ###########################################
+....#    ###########################################
+....#                               i1           2@2
+....################################################
+
+!---------------------------------------------------
+$link:1=first:1@
+$link:2=tunnel1:2@
+$enemy:0=0.2&10
+$enemy:1=0.1&30
+$fact:1:load=[
+    Mission: You found the place!  Now go find the trash cans, you can usually find it at the back of the building.
+]
+$fact:2:i1=[
+    $hero: Ohhh, there are no leftovers here! I can't believe it!
+    Rat: Hey pal, are you looking for meat?
+    $hero: Yeah!
+    Rat: What if I told you that I can lead you at the source of it?
+    $hero: I doubt it! How could you know it?
+    Rat: It's easy I'm a rat, and I suppose you know that we own all the info, and you are talking with the best in town. Now, if you wanna have it, just go inside the building at the kitchen, they have a huge supply of meat. But take care, you may find some problems on the way...
+    Rat: So, there is a tunnel over there where you can find the building garden, after that, you just have to go straight inside the building and over there you can find the kitchen.
+]

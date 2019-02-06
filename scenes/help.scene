@@ -1,0 +1,19 @@
+ __________________________________________________
+| Help Menu                                        |
+| ------------------------------------------------ |
+| Navigation Commands                              |
+| A -> Move left                                   |
+| S -> Move right                                  |
+| W -> Move up                                     |
+| Z -> Move down                                   |
+| Q -> Save and exit                               |
+|                                                  |
+| STATUS -> Open player status                     |
+| H -> Open Help                                   |
+|                                                  |
+| Dialog                                           |
+| > -> next text                                   |
+|                                                  |
+|                                                  |
+| < Back                                           |
+ --------------------------------------------------

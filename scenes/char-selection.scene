@@ -1,0 +1,19 @@
+              Select One Char Class                
+ _______1_______  _______2_______  _______3_______ 
+| %name0      % || %name1      % || %name2      % |
+| ------------- || ------------- || ------------- |
+| Str    %str0% || Str    %str1% || Str    %str2% |
+| Abilit %abl0% || Abilit %abl1% || Abilit %abl2% |
+| Resist %rst0% || Resist %rst1% || Resist %rst2% |
+| Intell %int0% || Intell %int1% || Intell %int2% |
+| ------------- || ------------- || ------------- |
+| %action0    % || %action1    % || %action2    % |
+| %action0    % || %action1    % || %action2    % |
+| %action0    % || %action1    % || %action2    % |
+| %action0    % || %action1    % || %action2    % |
+| %action0    % || %action1    % || %action2    % |
+| %action0    % || %action1    % || %action2    % |
+| %action0    % || %action1    % || %action2    % |
+| %action0    % || %action1    % || %action2    % |
+| %action0    % || %action1    % || %action2    % |
+ ---------------  ---------------  --------------- 
