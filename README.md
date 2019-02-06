@@ -34,6 +34,7 @@ java -jar target/jcgame-1.0-SNAPSHOT.jar
 
 ## Game Commands
 
+```
  __________________________________________________
 | Navigation Commands                              |
 | A -> Move left                                   |
@@ -51,5 +52,5 @@ java -jar target/jcgame-1.0-SNAPSHOT.jar
 |                                                  |
 | < Back                                           |
  --------------------------------------------------
-
+```
 
