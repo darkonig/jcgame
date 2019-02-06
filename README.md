@@ -1,7 +1,7 @@
 # Java Game - "La Casa de Ossos"
 ## Bones' House
 
-This is a game console written in Java, only uses libraries for testing.
+This is a game console written in purely with Java 8, only uses libraries for testing.
 
 ## Building
 
@@ -34,6 +34,22 @@ java -jar target/jcgame-1.0-SNAPSHOT.jar
 
 ## Game Commands
 
-
+ __________________________________________________
+| Navigation Commands                              |
+| A -> Move left                                   |
+| S -> Move right                                  |
+| W -> Move up                                     |
+| Z -> Move down                                   |
+| Q -> Save and exit                               |
+|                                                  |
+| STATUS -> Open player status                     |
+| H -> Open Help                                   |
+|                                                  |
+| Dialog                                           |
+| > -> next text                                   |
+|                                                  |
+|                                                  |
+| < Back                                           |
+ --------------------------------------------------
 
 
