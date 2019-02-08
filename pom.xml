@@ -37,7 +37,6 @@
     </dependencies>
 
     <build>
-
         <plugins>
 
             <plugin>
@@ -53,10 +52,6 @@
                 </executions>
                 <configuration>
                     <mainClass>com.dk.games.jcgame.Main</mainClass>
-                    <!--<arguments>
-                        <argument>foo</argument>
-                        <argument>bar</argument>
-                    </arguments>-->
                 </configuration>
             </plugin>
 
