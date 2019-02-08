@@ -22,22 +22,26 @@ public class Main {
         config.setSavedData("save.data");
         config.setCharacters("characters.data");
 
-        RepositoryService repository = new FileRepositoryService();
-        CharServiceImpl charService = new CharServiceImpl(config, repository);
-        SceneServiceImpl sceneService = new SceneServiceImpl(config);
+        RepositoryService repository = ServiceFactory.getRepositoryService();
+        CharService charService = ServiceFactory.getCharService(config, repository);
+        SceneService sceneService = ServiceFactory.getSceneService(config);
 
         if (!Files.exists(Paths.get(config.getCharacters()))) {
             repository.saveAll(config.getCharacters(), getChars());
         }
 
-        GamePlay main = new GamePlay(new AnsiRenderService()
+        GamePlay main = new GamePlay(ServiceFactory.getAnsiRenderService()
                 , sceneService
-                , new PlayerServiceImpl(config, repository)
+                , ServiceFactory.getPlayerService(config, repository)
                 , charService
-                , new BattleServiceImpl(sceneService));
+                , ServiceFactory.getBattleServiceImpl(sceneService));
         main.start();
     }
 
+    /**
+     * Create chars
+     * @return chars
+     */
     public static List<BattleChar> getChars() {
         return Arrays.asList(
             BattleChar.builder()

@@ -1,11 +1,13 @@
 package com.dk.games.jcgame.core.scene;
 
+import com.dk.games.jcgame.model.Copy;
 import com.dk.games.jcgame.model.Enemy;
 import com.dk.games.jcgame.model.IBattleChar;
 import com.dk.games.jcgame.model.Player;
 import com.dk.games.jcgame.service.CharService;
 import com.dk.games.jcgame.service.RenderService;
 import com.dk.games.jcgame.service.exception.LoadException;
+import com.dk.games.jcgame.utils.CloneUtils;
 import com.dk.games.jcgame.utils.StringUtils;
 
 import java.io.Serializable;
@@ -13,7 +15,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Scene implements Serializable {
+public class Scene implements Serializable, Copy<Scene> {
     private static final long serialVersionUID = 3467081342994322593L;
 
     private String name;
@@ -235,6 +237,14 @@ public class Scene implements Serializable {
         setScene(new String(scene));
     }
 
+    public SceneFactProcessor getSceneFactProcessor(Player player, Scene infoScene, SceneFact fact) {
+        // save the current scene
+        //String previousRenderedScene = getScene();
+
+        return new SceneFactProcessor(player, this, infoScene, fact);
+    }
+/*
+
     public void showFact(Player player, Scene infoScene, SceneFact fact, RenderService renderService) {
         int lines = (int) infoScene.getScene().chars().filter(e -> e == '\n').count();
 
@@ -315,6 +325,7 @@ public class Scene implements Serializable {
 
         renderService.render(this);
     }
+*/
 
     private char previousStep = ' ';
     /**
@@ -382,7 +393,28 @@ public class Scene implements Serializable {
         return ' ' == posChar || Character.isLetter(posChar) || '|' == posChar || '-' == posChar;
     }
 
-    public class Link implements Serializable {
+    public void refresh() {
+        processTexts();
+    }
+
+    @Override
+    public Scene copy() {
+        try {
+            Scene e = (Scene) super.clone();
+            e.links = CloneUtils.deepCloneMap(this.links);
+            e.enemies = CloneUtils.deepCloneList(this.enemies);
+            e.facts = CloneUtils.deepCloneMap(this.facts);
+
+            return e;
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public class Link implements Serializable, Copy<Link> {
+        private static final long serialVersionUID = 4006620358597042384L;
+
         private String target;
         private int position;
 
@@ -401,9 +433,19 @@ public class Scene implements Serializable {
         public void setPosition(int position) {
             this.position = position;
         }
+
+        @Override
+        public Link copy() {
+            try {
+                return (Link) super.clone();
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
     }
 
-    public class EnemyIn implements Serializable {
+    public class EnemyIn implements Serializable, Copy<EnemyIn> {
         private int level;
         private int expPoints;
         private float probability;
@@ -435,6 +477,16 @@ public class Scene implements Serializable {
 
         public void setProbability(float probability) {
             this.probability = probability;
+        }
+
+        @Override
+        public EnemyIn copy() {
+            try {
+                return (EnemyIn) super.clone();
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 

@@ -28,9 +28,18 @@ public class AnsiRenderService implements RenderService {
             throw new InvalidSceneException("Scene is required");
         }
 
+        render(scene.getScene());
+    }
+
+    @Override
+    public void render(String scene) throws InvalidSceneException {
+        if (scene == null) {
+            throw new InvalidSceneException("Scene is required");
+        }
+
         // erase screen
         System.out.print("\u001b[2J");
-        System.out.println(scene.getScene());
+        System.out.println(scene);
     }
 
     @Override

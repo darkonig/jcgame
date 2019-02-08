@@ -24,7 +24,7 @@ public class CloneUtils {
                 .collect(Collectors.toCollection(TreeSet::new));
     }
 
-    public static<T extends Copy<T>> List<T> deepCloneSet(List<T> src) {
+    public static<T extends Copy<T>> List<T> deepCloneList(List<T> src) {
         return src.stream()
                 .map(e -> e.copy())
                 .collect(Collectors.toList());

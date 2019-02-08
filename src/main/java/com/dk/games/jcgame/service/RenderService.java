@@ -11,6 +11,8 @@ public interface RenderService {
 
     void render(Scene scene) throws InvalidSceneException;
 
+    void render(String scene) throws InvalidSceneException;
+
     String getUserInput();
 
     void freezeScene(long milis);

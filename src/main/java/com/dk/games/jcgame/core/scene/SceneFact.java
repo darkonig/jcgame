@@ -1,10 +1,13 @@
 package com.dk.games.jcgame.core.scene;
 
+import com.dk.games.jcgame.model.Copy;
+import com.dk.games.jcgame.utils.CloneUtils;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-public class SceneFact implements Serializable {
+public class SceneFact implements Serializable, Copy<SceneFact> {
     private static final long serialVersionUID = 4112336274100073792L;
 
     private final String scene;
@@ -55,7 +58,20 @@ public class SceneFact implements Serializable {
         return Objects.hash(scene, factId);
     }
 
-    public static class FactMessage implements Serializable {
+    @Override
+    public SceneFact copy() {
+        try {
+            SceneFact e = (SceneFact) super.clone();
+            e.messages = CloneUtils.deepCloneList(this.messages);
+
+            return e;
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static class FactMessage implements Serializable, Copy<FactMessage> {
         private static final long serialVersionUID = -4860636548702318428L;
 
         private String name;
@@ -72,6 +88,16 @@ public class SceneFact implements Serializable {
 
         public String getMsg() {
             return msg;
+        }
+
+        @Override
+        public FactMessage copy() {
+            try {
+                return (FactMessage) super.clone();
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 }
