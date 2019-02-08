@@ -81,26 +81,28 @@ public class NavigationProcessorMap implements NavigationProcessor {
         }
 
         // try to make the move
-        SceneMoveAction moveAction = scene.move(charService, position);
-        if (moveAction != null) {
-            if (moveAction.hasSceneFact()) {
-                return new NavigationProcessorSceneFact(this, sceneService, player, moveAction.getSceneFact(), listener);
-            }
-
-            if (moveAction.hasNextScene()) {
-                // go to the next scene
-                String name = moveAction.getNextScene();
-                scene = sceneService.loadScene(scene.getName(), name);
-                param.setScene(scene);
-
-                if (listener != null) {
-                    listener.removeFacts(scene);
+        if (scene.getPosition() > -1) {
+            SceneMoveAction moveAction = scene.move(charService, position);
+            if (moveAction != null) {
+                if (moveAction.hasSceneFact()) {
+                    return new NavigationProcessorSceneFact(this, sceneService, player, moveAction.getSceneFact(), listener);
                 }
-            }
 
-            if (moveAction.getEnemy() != null) {
-                // goes to battle mode
-                return new NavigationProcessorBattle(this, battleService, player, moveAction.getEnemy());
+                if (moveAction.hasNextScene()) {
+                    // go to the next scene
+                    String name = moveAction.getNextScene();
+                    scene = sceneService.loadScene(scene.getName(), name);
+                    param.setScene(scene);
+
+                    if (listener != null) {
+                        listener.removeFacts(scene);
+                    }
+                }
+
+                if (moveAction.getEnemy() != null) {
+                    // goes to battle mode
+                    return new NavigationProcessorBattle(this, battleService, player, moveAction.getEnemy());
+                }
             }
         }
 

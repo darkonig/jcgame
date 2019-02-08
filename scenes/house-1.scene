@@ -22,7 +22,7 @@
 $link:1=garden-2:1@
 $link:2=house-2:2@
 $enemy:4=0.2&30
-$enemy:10=0.1&50
+$enemy:10=0.15&50
 $fact:1:load=[
     $hero: Oooooh! I got in the building, now I just have to find the kitchen!
 ]

@@ -46,6 +46,8 @@ public class NavigationProcessorBattle implements NavigationProcessor {
         }
 
         if (turn.isFinished()) {
+            waitUserInput = false;
+            freezeTime = 1000;
             player.fireAfterBattle();
             return this;
         }

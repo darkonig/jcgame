@@ -14,6 +14,7 @@ import java.io.Serializable;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Scene implements Serializable, Copy<Scene> {
     private static final long serialVersionUID = 3467081342994322593L;
@@ -147,7 +148,7 @@ public class Scene implements Serializable, Copy<Scene> {
     }
 
     void readEnemies() {
-        Pattern pattern = Pattern.compile("\\$enemy\\:\\d=.*");
+        Pattern pattern = Pattern.compile("\\$enemy\\:\\d+=.*");
         Matcher matcher = pattern.matcher(getBaseScene());
 
         while (matcher.find()) {
@@ -229,7 +230,9 @@ public class Scene implements Serializable, Copy<Scene> {
         List<Integer> r = new ArrayList<>(remove.size());
         facts.forEach((k,v) -> {
             if (remove.contains(v)) {
-                scene[k] = ' ';
+                if (k > -1) {
+                    scene[k] = ' ';
+                }
                 r.add(k);
             }
         });
@@ -290,10 +293,10 @@ public class Scene implements Serializable, Copy<Scene> {
         // draw a enemy
         float draw = new Random().nextFloat();
 
-        Optional<EnemyIn> enemy = enemies.stream().filter(e -> draw <= e.getProbability()).findAny();
-        if (enemy.isPresent()) {
+        List<EnemyIn> enemy = enemies.stream().filter(e -> draw <= e.getProbability()).collect(Collectors.toList());
+        if (enemy.size() > 0) {
             // return the enemy
-            EnemyIn x = enemy.get();
+            EnemyIn x = enemy.get(new Random().nextInt(enemy.size()));
             try {
                 IBattleChar charWithLevel = charService.getCharWithLevel(x.getLevel(), false);
 
