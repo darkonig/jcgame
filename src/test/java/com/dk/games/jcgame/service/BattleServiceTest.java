@@ -2,8 +2,8 @@ package com.dk.games.jcgame.service;
 
 import com.dk.games.jcgame.model.*;
 import com.dk.games.jcgame.model.action.Action;
-import com.dk.games.jcgame.model.action.ActionFire;
-import com.dk.games.jcgame.model.action.ActionStrongPunch;
+import com.dk.games.jcgame.model.action.ActionCrazyHowl;
+import com.dk.games.jcgame.model.action.ActionStrongBite;
 import com.dk.games.jcgame.core.scene.BattleScene;
 import com.dk.games.jcgame.service.exception.LoadException;
 import com.dk.games.jcgame.service.impl.BattleServiceImpl;
@@ -41,8 +41,8 @@ public class BattleServiceTest {
                 .addSkill(Skill.ABILITY, 2)
                 .addSkill(Skill.INTELLIGENCE, 3)
                 .addSkill(Skill.RESISTANCE, 1)
-                .addAction(new ActionStrongPunch())
-                .addMagicAction(new ActionFire())
+                .addAction(new ActionStrongBite())
+                .addMagicAction(new ActionCrazyHowl())
                 .hero(true)
                 .build();
         IBattleChar enemyChar = BattleChar.builder()
@@ -51,7 +51,7 @@ public class BattleServiceTest {
                 .addSkill(Skill.ABILITY, 2)
                 .addSkill(Skill.INTELLIGENCE, 3)
                 .addSkill(Skill.RESISTANCE, 1)
-                .addAction(new ActionStrongPunch())
+                .addAction(new ActionStrongBite())
                 .build();
 
         hero = spy(Player.create("Hero", heroChar));

@@ -1,8 +1,8 @@
 package com.dk.games.jcgame.model;
 
 import com.dk.games.jcgame.model.action.Action;
-import com.dk.games.jcgame.model.action.ActionFire;
-import com.dk.games.jcgame.model.action.ActionStrongPunch;
+import com.dk.games.jcgame.model.action.ActionCrazyHowl;
+import com.dk.games.jcgame.model.action.ActionStrongBite;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,8 +20,8 @@ public class PlayerTest {
                         .level(0)
                         .hero(true)
                         .addSkill(Skill.INTELLIGENCE, 2)
-                        .addAction(new ActionStrongPunch())
-                        .addMagicAction(new ActionFire())
+                        .addAction(new ActionStrongBite())
+                        .addMagicAction(new ActionCrazyHowl())
                     .build());
     }
 

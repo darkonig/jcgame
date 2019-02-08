@@ -1,9 +1,9 @@
 package com.dk.games.jcgame.model;
 
 import com.dk.games.jcgame.model.action.Action;
-import com.dk.games.jcgame.model.action.ActionFire;
-import com.dk.games.jcgame.model.action.ActionPunch;
-import com.dk.games.jcgame.model.action.ActionStrongPunch;
+import com.dk.games.jcgame.model.action.ActionCrazyHowl;
+import com.dk.games.jcgame.model.action.ActionTailAttack;
+import com.dk.games.jcgame.model.action.ActionStrongBite;
 import com.dk.games.jcgame.model.exception.NoStaminaPointsException;
 import com.dk.games.jcgame.core.rule.LevelUpRuleImpl;
 import org.junit.Before;
@@ -26,8 +26,8 @@ public class BattleCharTest {
                 .level(0)
                 .hero(true)
                 .addSkill(Skill.INTELLIGENCE, 0)
-                .addAction(new ActionStrongPunch())
-                .addMagicAction(new ActionFire())
+                .addAction(new ActionStrongBite())
+                .addMagicAction(new ActionCrazyHowl())
             .build());
     }
 
@@ -48,14 +48,14 @@ public class BattleCharTest {
 
     @Test
     public void addAction_add() {
-        character.addAction(new ActionPunch());
+        character.addAction(new ActionTailAttack());
 
         assertThat(character.getActions().size()).isEqualTo(2);
     }
 
     @Test
     public void addAction_noAdd() {
-        character.addAction(new ActionStrongPunch());
+        character.addAction(new ActionStrongBite());
 
         assertThat(character.getActions().size()).isEqualTo(1);
     }
@@ -147,7 +147,7 @@ public class BattleCharTest {
 
         when(character.rollDice()).thenReturn(3);
 
-        assertThat(character.doAttack(action)).isEqualTo(2);
+        assertThat(character.doAttack(action)).isEqualTo(3);
     }
 
     @Test
@@ -172,7 +172,7 @@ public class BattleCharTest {
     @Test
     public void fireLevelUp_success() {
         Action action = character.getActions().first();
-        Action action2 = new ActionPunch();
+        Action action2 = new ActionTailAttack();
         Action fire = character.getActions().first();
 
         int lvl1 = Math.round(2 * (float) Math.pow(1.2, 1));

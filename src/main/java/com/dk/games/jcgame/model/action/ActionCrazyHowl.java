@@ -1,14 +1,20 @@
 package com.dk.games.jcgame.model.action;
 
-public class ActionPunch extends Action {
+public class ActionCrazyHowl extends MagicAction {
 
-    private static final int START_HIT_POINTS = 3;
-    private static final long serialVersionUID = 4038204970086043099L;
+    private static final int START_HIT_POINTS = 5;
+    private static final long serialVersionUID = 5405650000410257049L;
 
     private int hitPoints = START_HIT_POINTS;
+    private final int staminaPoints = 3;
 
-    public ActionPunch() {
-        super("Punch");
+    public ActionCrazyHowl() {
+        super("Crazy Howl");
+    }
+
+    @Override
+    public int getStaminaPoints() {
+        return staminaPoints;
     }
 
     @Override

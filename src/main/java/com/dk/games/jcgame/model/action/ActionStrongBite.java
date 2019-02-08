@@ -1,14 +1,14 @@
 package com.dk.games.jcgame.model.action;
 
-public class ActionStrongPunch extends Action {
+public class ActionStrongBite extends Action {
 
-    private static final int START_HIT_POINTS = 2;
+    private static final int START_HIT_POINTS = 3;
     private static final long serialVersionUID = -6680184982080843786L;
 
     private int hitPoints = START_HIT_POINTS;
 
-    public ActionStrongPunch() {
-        super("Strong Punch");
+    public ActionStrongBite() {
+        super("Strong Bite");
     }
 
     @Override

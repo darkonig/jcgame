@@ -7,8 +7,8 @@ import com.dk.games.jcgame.model.BattleChar;
 import com.dk.games.jcgame.model.IBattleChar;
 import com.dk.games.jcgame.model.Player;
 import com.dk.games.jcgame.model.Skill;
-import com.dk.games.jcgame.model.action.ActionFire;
-import com.dk.games.jcgame.model.action.ActionStrongPunch;
+import com.dk.games.jcgame.model.action.ActionCrazyHowl;
+import com.dk.games.jcgame.model.action.ActionStrongBite;
 import com.dk.games.jcgame.service.BattleService;
 import com.dk.games.jcgame.service.CharService;
 import com.dk.games.jcgame.service.PlayerService;
@@ -23,12 +23,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -50,8 +48,8 @@ public class NavigationProcessorMapTest {
                 .addSkill(Skill.ABILITY, 2)
                 .addSkill(Skill.INTELLIGENCE, 3)
                 .addSkill(Skill.RESISTANCE, 1)
-                .addAction(new ActionStrongPunch())
-                .addMagicAction(new ActionFire())
+                .addAction(new ActionStrongBite())
+                .addMagicAction(new ActionCrazyHowl())
                 .hero(true)
                 .build();
 

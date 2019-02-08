@@ -1,8 +1,8 @@
 package com.dk.games.jcgame.service;
 
 import com.dk.games.jcgame.model.*;
-import com.dk.games.jcgame.model.action.ActionFire;
-import com.dk.games.jcgame.model.action.ActionStrongPunch;
+import com.dk.games.jcgame.model.action.ActionCrazyHowl;
+import com.dk.games.jcgame.model.action.ActionStrongBite;
 import com.dk.games.jcgame.service.exception.SaverException;
 import com.dk.games.jcgame.service.impl.PlayerServiceImpl;
 import org.junit.Before;
@@ -37,8 +37,8 @@ public class PlayerServiceTest {
                 .addSkill(Skill.ABILITY, 2)
                 .addSkill(Skill.INTELLIGENCE, 3)
                 .addSkill(Skill.RESISTANCE, 1)
-                .addAction(new ActionStrongPunch())
-                .addMagicAction(new ActionFire())
+                .addAction(new ActionStrongBite())
+                .addMagicAction(new ActionCrazyHowl())
                 .build());
     }
 
