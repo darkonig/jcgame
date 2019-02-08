@@ -8,7 +8,7 @@ public interface BattleRule {
     /**
      * Informs if the char can processed to attack or miss
      *
-     * @param battleChar
+     * @param battleChar character
      * @param dice a random number from 1 to 6
      * @return True - attack, False - 0 miss
      */
@@ -17,7 +17,7 @@ public interface BattleRule {
     /**
      * Informs if the char can dodge the attack
      *
-     * @param battleChar
+     * @param battleChar character
      * @param action the attack
      * @param dice a random number from 1 to 6
      * @return true - 1 dodge, False - receive attack

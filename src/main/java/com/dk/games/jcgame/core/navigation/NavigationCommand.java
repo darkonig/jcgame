@@ -7,7 +7,7 @@ public interface NavigationCommand {
     /**
      * Returns the new character position
      *
-     * @param params
+     * @param params Scene params
      * @return new character position
      */
     int execute(SceneParam params);

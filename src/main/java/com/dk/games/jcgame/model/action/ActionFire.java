@@ -6,7 +6,7 @@ public class ActionFire extends MagicAction {
     private static final long serialVersionUID = 5405650000410257049L;
 
     private int hitPoints = START_HIT_POINTS;
-    private int staminaPoints = 3;
+    private final int staminaPoints = 3;
 
     public ActionFire() {
         super("Magic Fire");

@@ -116,7 +116,7 @@ public class BattleServiceImpl implements BattleService {
         Action[] actions = scene.getEnemy().getActions()
                 .toArray(new Action[]{});
 
-        Action action = null;
+        Action action;
         int damage;
         if (!magicActions.isEmpty() && randomNum(2) > 1) {
             MagicAction[] ma = magicActions.toArray(new MagicAction[]{});

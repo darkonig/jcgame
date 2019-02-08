@@ -15,6 +15,18 @@ mvn clean compile
 mvn clean package
 ```
 
+## Running Tests
+
+```cmd
+mvn clean test
+```
+
+## Running Coverage
+
+```cmd
+mvn clean verify
+```
+
 ## Running
 
 To running it is necessary a ANSI terminal enabled.

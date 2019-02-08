@@ -36,6 +36,8 @@ public class Scene implements Serializable, Copy<Scene> {
 
     private Map<Integer, SceneFact> facts;
 
+    private char previousStep = ' ';
+
     public Scene(String name, String previousScene) {
         this.name = name;
         this.previousScene = previousScene;
@@ -101,7 +103,7 @@ public class Scene implements Serializable, Copy<Scene> {
             l.setTarget(linkTarget);
             l.setPosition(getBaseScene().indexOf(linkPosition));
 
-            if (previousScene != null && linkTarget.equals(previousScene)) {
+            if (linkTarget.equals(previousScene)) {
                 position = l.getPosition();
             }
 
@@ -243,95 +245,11 @@ public class Scene implements Serializable, Copy<Scene> {
 
         return new SceneFactProcessor(player, this, infoScene, fact);
     }
-/*
 
-    public void showFact(Player player, Scene infoScene, SceneFact fact, RenderService renderService) {
-        int lines = (int) infoScene.getScene().chars().filter(e -> e == '\n').count();
-
-        // save the current scene
-        String previousRenderedScene = getScene();
-
-        // get a piece of the current scene
-        String newScene = getScene().substring(0, (getScene().length() - lines * rowLength) - 1);
-
-        Iterator<SceneFact.FactMessage> iterator = fact.getMessages().iterator();
-
-        // iterates through all the fact messages
-        while (iterator.hasNext()) {
-            SceneFact.FactMessage msg = iterator.next();
-            String m = msg.getMsg();
-
-            m = m.replaceAll("\\$hero", player.getName());
-
-            // while there is text on the message, print it
-            while (m.length() > 0) {
-                // Set message name
-                String textScene = infoScene.getBaseScene();
-                {
-                    String name;
-                    if ("$hero".equals(msg.getName())) {
-                        name = player.getName();
-                    } else {
-                        name = msg.getName();
-                    }
-
-                    Pattern compile = Pattern.compile("%name.*%");
-                    Matcher matcher = compile.matcher(textScene);
-                    if (matcher.find()) {
-                        String g = matcher.group();
-
-                        if (name.length() < g.length()) {
-                            name = StringUtils.padRight(name, g.length());
-                        }
-                        textScene = textScene.replaceFirst(g, name);
-                    }
-                }
-
-                // fits the fact message into the scene
-                Pattern compile = Pattern.compile("%text.*%");
-                Matcher matcher = compile.matcher(textScene);
-
-                while (matcher.find()) {
-                    String g = matcher.group();
-
-                    String replace = "";
-
-                    // reducing fact message
-                    if (m.length() > g.length()) {
-                        replace = m.substring(0, g.length());
-                        m = m.substring(g.length());
-                    } else if (m.length() > 0){
-                        replace = m;
-                        m = "";
-                    }
-
-                    if (replace.length() < g.length()) {
-                        replace = StringUtils.padRight(replace, g.length());
-                    }
-
-                    textScene = textScene.replaceFirst(g, replace);
-                }
-
-                // print scene
-                setScene(newScene + textScene);
-                do {
-                    renderService.render(this);
-                } while(!">".equals(renderService.getUserInput()));
-            }
-        }
-
-        // return to previous scene
-        setScene(previousRenderedScene);
-
-        renderService.render(this);
-    }
-*/
-
-    private char previousStep = ' ';
     /**
      * Tries to move to the given position
      *
-     * @param position
+     * @param position position to move char
      * @return returns empty if moved, null if not and the scene name if is to move to he next scene
      */
     public SceneMoveAction move(CharService charService, int position) {
@@ -446,6 +364,7 @@ public class Scene implements Serializable, Copy<Scene> {
     }
 
     public class EnemyIn implements Serializable, Copy<EnemyIn> {
+        private static final long serialVersionUID = -8135463040885535919L;
         private int level;
         private int expPoints;
         private float probability;
