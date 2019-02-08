@@ -40,7 +40,7 @@ public class NavigationProcessorBattle implements NavigationProcessor {
             turn = battleService.execEnemyTurn(turn.getBattleScene());
         }
 
-        if (!turn.isPlayerTurn()) {
+        if (!turn.isPlayerTurn() || !player.isAlive()) {
             waitUserInput = false;
             freezeTime = 1000;
         }

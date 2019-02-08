@@ -15,13 +15,13 @@ mvn clean compile
 mvn clean package
 ```
 
-## Running Tests
+## Running Tests Only
 
 ```cmd
 mvn clean test
 ```
 
-## Running Coverage
+## Running Coverage Only
 
 ```cmd
 mvn clean verify
