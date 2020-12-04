@@ -5,6 +5,7 @@ import com.dk.games.jcgame.model.Copy;
 import java.io.Serializable;
 import java.util.Objects;
 
+// IMPROV should be a interface (better depend of interface than abstractions)
 public abstract class Action implements Serializable, Copy<Action>, Comparable<Action> {
 
     private static final long serialVersionUID = -7294290456262430724L;

@@ -53,8 +53,8 @@ public class Scene implements Serializable, Copy<Scene> {
 
     public void setBaseScene(String baseScene) {
         this.baseScene = baseScene;
-        position = getBaseScene().indexOf("s@");
-        rowLength = getBaseScene().indexOf("\n") + 1;
+        position = getBaseScene().indexOf("s@"); // O(n*2)
+        rowLength = getBaseScene().indexOf('\n') + 1; //IMPROV use char O(n)
 
         processTexts();
     }
@@ -89,16 +89,23 @@ public class Scene implements Serializable, Copy<Scene> {
     }
 
     void processTexts() {
-        Pattern pattern = Pattern.compile("\\$link\\:\\d=.*");
+        Pattern pattern = Pattern.compile("\\$link\\:\\d=.*"); // O(n)
         Matcher matcher = pattern.matcher(getBaseScene());
 
         while (matcher.find()) {
             String link = matcher.group();
-            String[] split = link.split("[:=]");
 
-            String linkNum = split[1];
-            String linkTarget = split[2].trim();
-            String linkPosition = split[3].trim();
+//            String[] split = link.split("[:=]");
+//            String linkNum = split[1];
+//            String linkTarget = split[2].trim();
+//            String linkPosition = split[3].trim();
+
+            //IMPROV improve performance
+            StringTokenizer tokenizer = new StringTokenizer(link, ":=");
+            tokenizer.nextToken();
+            String linkNum = tokenizer.nextToken();
+            String linkTarget = tokenizer.nextToken().trim();
+            String linkPosition = tokenizer.nextToken().trim();
 
             Link l = new Link();
             l.setTarget(linkTarget);
@@ -111,17 +118,18 @@ public class Scene implements Serializable, Copy<Scene> {
             links.put(linkNum.charAt(0), l);
         }
 
-        String cc = getBaseScene().replace("s@", " ");
+        String cc = getBaseScene().replace("s@", " "); // O(n)
 
-        int comments = cc.indexOf("!---");
+        int comments = cc.indexOf("!---"); // O(n)
         if (comments > -1) {
-            this.setScene(cc.substring(0, comments));
+            this.setScene(cc.substring(0, comments)); // O(n)
         } else {
             this.setScene(cc);
         }
 
         // place the player on the right spot of the scene
         if (position > -1) {
+            //IMPROV better performance with apache-commons StringUtils(RegExUtils).replaceAll
             char[] chars = getScene()
                         .replaceAll("\\d@", "  ")
                         .toCharArray();
@@ -155,6 +163,7 @@ public class Scene implements Serializable, Copy<Scene> {
             String str = matcher.group();
             String[] split = str.split("[:=&]");
 
+            // IMPROV Integer.parseInt
             int level = Integer.valueOf(split[1]);
             float probability = Float.valueOf(split[2].trim());
             int exp = Integer.valueOf(split[3].trim());
@@ -174,6 +183,7 @@ public class Scene implements Serializable, Copy<Scene> {
 
         while (matcher.find()) {
             String link = matcher.group();
+            // IMPROV outside pattern .split
             String[] split = link.split("(?<!\\\\)[:=]");
 
             String id = split[1];
@@ -294,6 +304,7 @@ public class Scene implements Serializable, Copy<Scene> {
         float draw = new Random().nextFloat();
 
         List<EnemyIn> enemy = enemies.stream().filter(e -> draw <= e.getProbability()).collect(Collectors.toList());
+        // IMPROV enemy.empty()
         if (enemy.size() > 0) {
             // return the enemy
             EnemyIn x = enemy.get(new Random().nextInt(enemy.size()));

@@ -1,5 +1,6 @@
 package com.dk.games.jcgame.model.action;
 
+//IMPROV too much code repetition
 public class ActionBite extends Action {
 
     private static final int START_HIT_POINTS = 1;

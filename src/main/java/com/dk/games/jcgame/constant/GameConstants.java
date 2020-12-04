@@ -1,5 +1,6 @@
 package com.dk.games.jcgame.constant;
 
+// IMPROV make it final class with a private constructor (shouldn't be a interface because this class doesn't implements a type)
 public interface GameConstants {
 
     String SCENE_INTRO = "intro";

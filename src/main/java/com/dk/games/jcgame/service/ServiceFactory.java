@@ -6,6 +6,7 @@ import com.dk.games.jcgame.service.impl.*;
 /**
  * Services Factory
  */
+// IMPROV should be a ServiceBuilder
 public class ServiceFactory {
 
     public static RepositoryService getRepositoryService() {
